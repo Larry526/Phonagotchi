@@ -75,6 +75,9 @@
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(velocityWithGestureRecognizer:)];
     [self.petImageView addGestureRecognizer:panGestureRecognizer];
     
+    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinchOnAppleView:)];
+    [self.appleImageView addGestureRecognizer:pinchGestureRecognizer];
+
 }
 
 -(void)changePetImage:(NSString*)petImage{
@@ -92,6 +95,23 @@
 
     }
 }
+
+-(void)pinchOnAppleView:(UIPinchGestureRecognizer*)sender {
+    switch (sender.state) {
+        case UIGestureRecognizerStateBegan:
+            { }
+            break;
+        case UIGestureRecognizerStateChanged:
+            { }
+            break;
+        case UIGestureRecognizerStateEnded:
+            { }
+            break;
+        default:
+            break;
+    }
+}
+
 
 
 
