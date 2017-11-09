@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Pet.h"
 
 @interface LPGViewController : UIViewController
+
+-(void)changePetImage:(NSString*)petImage;
 
 @end
