@@ -12,5 +12,6 @@
 @interface LPGViewController : UIViewController
 
 -(void)changePetImage:(NSString*)petImage;
+-(void)createApple;
 
 @end
