@@ -13,6 +13,8 @@
 @property (nonatomic) UIImageView *petImageView;
 @property (nonatomic) UIImageView *bucketImageView;
 @property (nonatomic) UIImageView *appleImageView;
+@property (nonatomic) UIImageView *appleImageViewNew;
+
 
 
 @end
@@ -53,17 +55,75 @@
     self.bucketImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.bucketImageView];
     
-    [NSLayoutConstraint constraintWithItem:self.bucketImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:-25].active = YES;
-    [NSLayoutConstraint constraintWithItem:self.bucketImageView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1 constant:25].active = YES;
-    [NSLayoutConstraint constraintWithItem:self.bucketImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:175].active = YES;
-    [NSLayoutConstraint constraintWithItem:self.bucketImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:175].active = YES;
+    [NSLayoutConstraint constraintWithItem:self.bucketImageView
+                                 attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view attribute:NSLayoutAttributeBottom
+                                multiplier:1 constant:-25].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:self.bucketImageView
+                                 attribute:NSLayoutAttributeLeft
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view attribute:NSLayoutAttributeLeft
+                                multiplier:1
+                                  constant:25].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:self.bucketImageView
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeHeight
+                                multiplier:1
+                                  constant:175].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:self.bucketImageView
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil attribute:NSLayoutAttributeWidth
+                                multiplier:1
+                                  constant:175].active = YES;
     
     self.bucketImageView.image = [UIImage imageNamed:@"bucket.png"];
     
     
-    [self createApple];
-
+    self.appleImageView = [[UIImageView alloc]initWithFrame:CGRectZero];
+    self.appleImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.appleImageView];
+    self.appleImageView.userInteractionEnabled = YES;
     
+    [NSLayoutConstraint constraintWithItem:self.appleImageView
+                                 attribute:NSLayoutAttributeCenterX
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.bucketImageView
+                                 attribute:NSLayoutAttributeCenterX
+                                multiplier:1
+                                  constant:0].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:self.appleImageView
+                                 attribute:NSLayoutAttributeCenterY
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.bucketImageView
+                                 attribute:NSLayoutAttributeCenterY
+                                multiplier:1
+                                  constant:0].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:self.appleImageView
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeHeight
+                                multiplier:1
+                                  constant:70].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:self.appleImageView
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeWidth
+                                multiplier:1
+                                  constant:70].active = YES;
+    
+    self.appleImageView.image = [UIImage imageNamed:@"apple.png"];
+
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(velocityWithGestureRecognizer:)];
     [self.petImageView addGestureRecognizer:panGestureRecognizer];
     
@@ -76,19 +136,46 @@
     self.petImageView.image = [UIImage imageNamed:petImage];
 }
 
--(void)createApple {
+-(void)createNewApple {
     
-    self.appleImageView = [[UIImageView alloc]initWithFrame:CGRectZero];
-    self.appleImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:self.appleImageView];
-    self.appleImageView.userInteractionEnabled = YES;
+    self.appleImageViewNew = [[UIImageView alloc]initWithFrame:CGRectZero];
+    self.appleImageViewNew.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.appleImageViewNew];
+    self.appleImageViewNew.userInteractionEnabled = YES;
     
-    [NSLayoutConstraint constraintWithItem:self.appleImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.bucketImageView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0].active = YES;
-    [NSLayoutConstraint constraintWithItem:self.appleImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.bucketImageView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0].active = YES;
-    [NSLayoutConstraint constraintWithItem:self.appleImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:70].active = YES;
-    [NSLayoutConstraint constraintWithItem:self.appleImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:70].active = YES;
+    [NSLayoutConstraint constraintWithItem:self.appleImageViewNew
+                                 attribute:NSLayoutAttributeCenterX
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.bucketImageView
+                                 attribute:NSLayoutAttributeCenterX
+                                multiplier:1
+                                  constant:0].active = YES;
     
-    self.appleImageView.image = [UIImage imageNamed:@"apple.png"];
+    [NSLayoutConstraint constraintWithItem:self.appleImageViewNew
+                                 attribute:NSLayoutAttributeCenterY
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.bucketImageView
+                                 attribute:NSLayoutAttributeCenterY
+                                multiplier:1
+                                  constant:0].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:self.appleImageViewNew
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeHeight
+                                multiplier:1
+                                  constant:70].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:self.appleImageViewNew
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeWidth
+                                multiplier:1
+                                  constant:70].active = YES;
+    
+    self.appleImageViewNew.image = [UIImage imageNamed:@"apple.png"];
 
     
 }
@@ -108,7 +195,7 @@
 -(void)pinchOnAppleView:(UIPinchGestureRecognizer*)sender {
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
-        {[self createApple];}
+        {[self createNewApple];}
             break;
         case UIGestureRecognizerStateChanged:
         {CGPoint locationInView = [sender locationInView:self.view];
@@ -116,11 +203,18 @@
         }
             break;
         case UIGestureRecognizerStateEnded:
-        {if (CGRectIntersectsRect( self.petImageView.frame,self.appleImageView.frame)) {
+        {if (CGRectIntersectsRect(self.petImageView.frame,self.appleImageView.frame)) {
             NSLog(@"You dropped it inside the cat!");
+            
+            [UIView animateWithDuration:1.0 animations:^(void) {
+                self.appleImageView.alpha = 1;
+                self.appleImageView.alpha = 0;
+            }
+                             completion:^(BOOL finished){
+                                 [self.appleImageView removeFromSuperview];
+                             }];
         } else {
             NSLog(@"You dropped it outside the cat!");
-            //        [self.appleImageView removeFromSuperview];
         }
         }
             break;
